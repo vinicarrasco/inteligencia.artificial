@@ -89,10 +89,16 @@ const perguntas = [
   let historiaFinal = "";  
 
 function mostraPergunta() {
-    perguntaAtual = perguntas[atual];
-    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    if (atual >= perguntas.length) {
     mostraAlternativas();
+    return;
+  }
+  perguntaAtual = perguntas[atual];
+  caixaPerguntas.textContent = perguntaAtual.enunciado;
+  caixaAlternativas.textContent = "";
+  mostraAlternativas();
 }
+
 function mostraAlternativas(){
     for(const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
